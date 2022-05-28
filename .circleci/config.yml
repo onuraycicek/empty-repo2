@@ -59,6 +59,10 @@ workflows:
       - test2:
           requires:
               - install_dependencies
+          filters:
+                branches:
+                  only:
+                    - development
       - test3:
           requires:
               - install_dependencies
@@ -66,3 +70,4 @@ workflows:
                 branches:
                   only:
                     - master
+
