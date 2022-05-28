@@ -1,0 +1,39 @@
+{
+  "name": "@kozmonos/form-elements",
+  "version": "1.0.1",
+  "description": "Vue form-elements component",
+  "scripts": {
+    "test": "echo '1'",
+    "test2": "echo '2'",
+   "test3": "echo '3'"
+  },
+  "main": "dist/form-elements.common.js",
+  "unpkg": "dist/form-elements.umd.min.js",
+  "files": [
+    "dist/**/*",
+    "assets/**/*",
+    "README.md"
+  ],
+  "dependencies": {
+    "bootstrap-vue": "^2.21.2"
+  },
+  "devDependencies": {
+    
+  },
+  "bugs": {
+    "url": "hhttps://github.com/Kozmonos/package-vue-form-elements/issues"
+  },
+  "homepage": "https://github.com/Kozmonos/package-vue-form-elements#readme",
+  "keywords": [
+    "vue form-elements component",
+    "vue form-elements",
+    "form-elements component",
+    "form-elements"
+  ],
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kozmonos/package-vue-form-elements.git"
+  }
+}
+

@@ -1,0 +1,68 @@
+version: 2.1
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:16.13.1
+
+jobs:
+  install_dependencies:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+      - run: npm install
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - persist_to_workspace:
+          root: ~/repo
+          paths: 
+            - '*'
+
+  test1:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Run tests1
+          command: npm test
+  test2:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Run tests2
+          command: npm run test2
+  test3:
+    <<: *defaults
+    steps:
+    - attach_workspace:
+            at: ~/repo
+    - run:
+        name: Run tests3
+        command: npm run test3
+
+
+workflows:
+  version: 2
+  test_build_deploy:
+    jobs:
+      - install_dependencies
+      - test1:
+          requires:
+              - install_dependencies
+      - test2:
+          requires:
+              - install_dependencies
+      - test3:
+          requires:
+              - install_dependencies
+          filters:
+                branches:
+                  only:
+                    - master
